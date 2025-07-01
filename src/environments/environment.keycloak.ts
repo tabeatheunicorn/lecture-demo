@@ -4,6 +4,6 @@ export const environment = {
   keycloakConfig: {
     url: 'https://keycloak.gruppe.ai/auth/',
     realm: 'AI-Gruppe',
-    clientId: 'lecture-api'
+    clientId: 'Infraboard'
   }
 };
