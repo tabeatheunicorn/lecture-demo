@@ -1,0 +1,19 @@
+<div>
+  <label>
+    Mean:
+    <input type="number" [(ngModel)]="mean" />
+  </label>
+  <label>
+    Std Dev:
+    <input type="number" [(ngModel)]="std" />
+  </label>
+  <label>
+    Interval (ms):
+    <input type="number" [(ngModel)]="interval" />
+  </label>
+  <button (click)="connect()">Connect</button>
+  <button (click)="disconnect()">Disconnect</button>
+</div>
+<div>
+  {{data() | json}}
+</div>
