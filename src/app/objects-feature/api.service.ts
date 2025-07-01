@@ -9,7 +9,7 @@ import { ApiObject } from './object.model';
   providedIn: 'root',
 })
 export class ApiService {
-  private readonly baseUrl = `http://${environment.serverURL}`;
+  private readonly baseUrl = `https://${environment.serverURL}`;
   private readonly http = inject(HttpClient);
   private readonly destroyRef = inject(DestroyRef);
 
