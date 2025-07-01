@@ -81,6 +81,12 @@
             },
             "development": {
               "buildTarget": "lecture-app:build:development"
+            },
+            "noauth": {
+              "buildTarget": "lecture-app:build:noauth"
+            },
+            "keycloak": {
+              "buildTarget": "lecture-app:build:keycloak"
             }
           },
           "defaultConfiguration": "development"
