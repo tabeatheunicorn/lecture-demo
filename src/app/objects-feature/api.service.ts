@@ -1,6 +1,7 @@
-import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, interval, switchMap } from 'rxjs';
+import { DestroyRef, inject, Injectable, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { interval, Observable, switchMap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { ApiObject } from './object.model';
 
@@ -10,6 +11,7 @@ import { ApiObject } from './object.model';
 export class ApiService {
   private readonly baseUrl = `https://${environment.serverURL}`;
   private readonly http = inject(HttpClient);
+  private readonly destroyRef = inject(DestroyRef);
 
   private readonly apiObjects = signal<ApiObject[]>([]);
   readonly objects = this.apiObjects.asReadonly();
@@ -17,7 +19,9 @@ export class ApiService {
   constructor() {
     // Poll every 5 seconds and update the signal
     interval(5000)
-      .pipe(switchMap(() => this.getObjects()))
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        switchMap(() => this.getObjects()))
       .subscribe({
         next: (objects) => {
           this.apiObjects.set(objects);
