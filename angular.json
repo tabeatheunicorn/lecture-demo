@@ -53,6 +53,22 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "noauth": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.noauth.ts"
+                }
+              ]
+            },
+            "keycloak": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.keycloak.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
