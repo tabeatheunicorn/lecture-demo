@@ -1,1 +1,11 @@
-{{ objects | json }}
+@let response = responseState();
+@switch (true) {
+@case('data' in response){
+
+<pre>{{ response.data | json }}</pre>
+}
+@case( 'error' in response)
+{ <p>Error: {{ response.error | json }}</p>}
+@default
+{<p>Loading...</p>}
+}
